@@ -12,8 +12,6 @@ public class KafkaProperties {
 
     private String bootStrapServers = "localhost:9092";
 
-    private Map<String, String> consumer = new HashMap<>();
-
     private Map<String, String> producer = new HashMap<>();
 
     public String getBootStrapServers() {
@@ -22,18 +20,6 @@ public class KafkaProperties {
 
     public void setBootStrapServers(String bootStrapServers) {
         this.bootStrapServers = bootStrapServers;
-    }
-
-    public Map<String, Object> getConsumerProps() {
-        Map<String, Object> properties = new HashMap<>(this.consumer);
-        if (!properties.containsKey("bootstrap.servers")) {
-            properties.put("bootstrap.servers", this.bootStrapServers);
-        }
-        return properties;
-    }
-
-    public void setConsumer(Map<String, String> consumer) {
-        this.consumer = consumer;
     }
 
     public Map<String, Object> getProducerProps() {

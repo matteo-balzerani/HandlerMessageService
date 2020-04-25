@@ -35,6 +35,7 @@ public class MessageDTO implements Serializable {
 		this.publisher = publisher;
 	}
 
-	
-	
+	public MessageDTO() {
+	}
+
 }

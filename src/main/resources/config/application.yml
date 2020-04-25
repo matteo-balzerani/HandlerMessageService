@@ -6,17 +6,6 @@ spring:
    jackson:
     serialization:
       indent-output: true
-swagger:
-    default-include-pattern: /api/.*
-    title: producerApi API
-    description: producerApi API documentation
-    version: 0.0.1
-    terms-of-service-url:
-    contact-name:
-    contact-url:
-    contact-email:
-    license:
-    license-url:
 kafka:
   bootstrap-servers: localhost:29092
   consumer:
@@ -31,4 +20,4 @@ server:
   port: 8088
 logging:
   level:
-    ROOT: DEBUG
+    ROOT: INFO

@@ -27,7 +27,6 @@ public class MessagesController {
 
 	private final KafkaProperties kafkaProperties;
 	private KafkaProducer<String, String> producer;
-	private ExecutorService sseExecutorService = Executors.newCachedThreadPool();
 
 	public MessagesController(KafkaProperties kafkaProperties) {
 		this.kafkaProperties = kafkaProperties;
@@ -37,7 +36,7 @@ public class MessagesController {
 	@PostMapping("/publish/{topic}")
 	public PublishResult publish(@PathVariable String topic, @RequestBody MessageDTO messageDTO)
 			throws ExecutionException, InterruptedException {
-		log.debug("REST request to send to Kafka topic {} from {} the message : {}", topic, messageDTO.getPublisher(),
+		log.info("REST request to send to Kafka topic {} from {} the message : {}", topic, messageDTO.getPublisher(),
 				messageDTO.getPayload());
 		RecordMetadata metadata = producer.send(new ProducerRecord<>(topic, messageDTO.getPayload())).get();
 		return new PublishResult(metadata.topic(), metadata.partition(), metadata.offset(),
